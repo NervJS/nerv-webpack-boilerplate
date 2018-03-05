@@ -13,11 +13,8 @@ module.exports = {
     indentation: 2,
     'number-leading-zero': null,
     'media-feature-name-no-unknown': [
-      true,
-      {
-        ignoreMediaFeatureNames: ['min--moz-device-pixel-ratio']
-      }
+      true
     ],
-    'unit-whitelist': ['px', '%', 'dppx', 's']
+    'unit-whitelist': ['px', '%', 's']
   }
 }

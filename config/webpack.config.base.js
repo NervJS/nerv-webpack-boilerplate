@@ -3,7 +3,7 @@ const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin')
 
 const config = {
   entry: {
-    'index': helpers.root('./src/index.js'),
+    'index': helpers.root('./src/index.tsx'),
     'es5-polyfill': 'es5-polyfill'
   },
   output: {
@@ -15,20 +15,28 @@ const config = {
   devtool: 'source-map',
   resolve: {
     symlinks: true,
-    extensions: ['.js', '.jsx', '.html', '.css', '.scss'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.html', '.css', '.scss'],
     alias: {
       'react': 'nervjs',
       'react-dom': 'nervjs'
     }
   },
   module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
-      }
-    ]
+    rules: [{
+      test: /\.jsx?$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader'
+    }, {
+      test: /\.tsx?$/,
+      exclude: /node_modules/,
+      use: [
+        'babel-loader', {
+        loader: 'ts-loader',
+        options: {
+          onlyCompileBundledFiles: true
+        }
+      }]
+    }]
   },
   plugins: [
     new NamedModulesPlugin()
