@@ -1,0 +1,24 @@
+{
+  "presets": [
+    ["@babel/preset-env", {
+      "targets": {
+        "browsers": [
+          "ie >= 8",
+          "Chrome >= 21",
+          "Firefox >= 1",
+          "Edge >= 13",
+          "last 3 versions"
+        ]
+      }
+    }]
+  ],
+  "plugins": [
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-class-properties",
+    ["@babel/plugin-transform-react-jsx", {
+      "pragma": "Nerv.createElement"
+    }]
+  ]
+}
