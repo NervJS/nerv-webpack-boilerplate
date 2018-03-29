@@ -1,6 +1,8 @@
 {
   "presets": [
     ["@babel/preset-env", {
+      "loose": false,
+      "useBuiltIns": "entry",
       "targets": {
         "browsers": [
           "ie >= 8",
@@ -15,10 +17,11 @@
   "plugins": [
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-proposal-object-rest-spread",
-    "@babel/plugin-transform-runtime",
     "@babel/plugin-proposal-class-properties",
     ["@babel/plugin-transform-react-jsx", {
       "pragma": "Nerv.createElement"
-    }]
+    }],
+    "babel-plugin-transform-es3-member-expression-literals",
+    "babel-plugin-transform-es3-property-literals"
   ]
 }

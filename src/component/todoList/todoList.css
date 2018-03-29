@@ -1,0 +1,8 @@
+.todolist {
+  list-style: none;
+}
+
+.todolist_item_footer {
+  margin-top: 20px;
+  color: #0052cc;
+}

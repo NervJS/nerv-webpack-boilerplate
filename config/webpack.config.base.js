@@ -3,7 +3,7 @@ const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin')
 
 const config = {
   entry: {
-    'index': helpers.root('./src/index.tsx'),
+    'index': helpers.root('./src/page/index.js'),
     'es5-polyfill': 'es5-polyfill'
   },
   output: {

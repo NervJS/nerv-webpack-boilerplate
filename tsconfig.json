@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
+    "declaration": false,
     "experimentalDecorators": true,
     "jsx": "react",
     "jsxFactory": "Nerv.createElement",
-    "module": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "noImplicitAny": false,
     "noUnusedLocals": true,
@@ -16,8 +16,7 @@
     "rootDir": ".",
     "sourceMap": true,
     "strictNullChecks": true,
-    "target": "es6",
-    "traceResolution": true
+    "target": "es6"
   },
   "include": [
     "src"

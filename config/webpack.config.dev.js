@@ -27,8 +27,8 @@ webpackConfig.plugins = [
   }),
   new HtmlWebpackPlugin({
     inject: false,
-    template: helpers.root('./src/index.html'),
-    favicon: helpers.root('./src/favicon.png')
+    template: helpers.root('./src/page/index.html'),
+    favicon: helpers.root('./src/assets/favicon.png')
   })
 ]
 

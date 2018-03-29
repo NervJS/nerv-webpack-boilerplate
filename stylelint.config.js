@@ -15,6 +15,6 @@ module.exports = {
     'media-feature-name-no-unknown': [
       true
     ],
-    'unit-whitelist': ['px', '%', 's']
+    'unit-whitelist': ['px', '%', 's', 'em']
   }
 }

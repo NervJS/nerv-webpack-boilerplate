@@ -1,0 +1,12 @@
+.todobox {
+  width: 800px;
+  margin: auto;
+  color: rgb(23, 43, 77);
+}
+.todobox_tit {
+  font-size: 1.71429em;
+  font-style: inherit;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 32px;
+}

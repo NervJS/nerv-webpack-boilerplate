@@ -1,4 +1,4 @@
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin')
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const autoprefixer = require('autoprefixer')
@@ -55,8 +55,8 @@ webpackConfig.plugins = [...webpackConfig.plugins,
   extractStyle,
   new HtmlWebpackPlugin({
     inject: false,
-    template: helpers.root('/src/index.html'),
-    favicon: helpers.root('/src/favicon.png'),
+    template: helpers.root('/src/page/index.html'),
+    favicon: helpers.root('/src/assets/favicon.png'),
     minify: {
       removeComments: true,
       collapseWhitespace: true,
@@ -70,9 +70,23 @@ webpackConfig.plugins = [...webpackConfig.plugins,
       minifyURLs: true
     }
   }),
-  new UglifyJsPlugin({
-    include: /\.js$/,
-    minimize: true
+  new webpack.optimize.UglifyJsPlugin({
+    beautify: false,
+    mangle: {
+      screw_ie8: false,
+      keep_fnames: true,
+      properties: false,
+      keep_quoted: true
+    },
+    compress: {
+      warnings: false,
+      screw_ie8: false,
+      properties: false
+    },
+    output: {
+      keep_quoted_props: true
+    },
+    comments: false
   }),
   new DefinePlugin({
     'process.env': env

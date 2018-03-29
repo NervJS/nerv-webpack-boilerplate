@@ -1,0 +1,27 @@
+.todoitem {
+  overflow: hidden;
+}
+
+.todoitem_checkbox {
+  float: left;
+  position: relative;
+  top: 2px;
+}
+
+.todoitem_task {
+  float: left;
+}
+
+.todoitem_btn {
+  float: right;
+  height: 24px;
+  color: #0052cc;
+  cursor: pointer;
+  line-height: 24px;
+  text-align: center;
+  transition: all 0.1s linear;
+}
+.todoitem_btn:hover {
+  color: #0065ff;
+  text-decoration: underline;
+}
