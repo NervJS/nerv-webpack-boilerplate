@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const DefinePlugin = require('webpack/lib/DefinePlugin')
 const env = require('../environment/dev.env')
 
+webpackConfig.mode = "development";
 webpackConfig.module.rules = [
   ...webpackConfig.module.rules,
   {
