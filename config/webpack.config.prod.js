@@ -21,14 +21,11 @@ webpackConfig.optimization = {
         beautify: false,
         ie8: true,
         mangle: {
-          // screw_ie8: false,
           keep_fnames: true,
           properties: false,
-          // keep_quoted: true
         },
         compress: {
           warnings: false,
-          // screw_ie8: false,
           properties: false
         },
         output: {
@@ -40,41 +37,42 @@ webpackConfig.optimization = {
   ]
 };
 
-webpackConfig.module.rules = [...webpackConfig.module.rules,
-{
-  test: /\.s?css$/,
-  use: [
-    MiniCssExtractPlugin.loader,
-    {
-      loader: 'css-loader',
-      options: {
-        minimize: true,
-        importLoaders: 2
-      }
-    },
-    {
-      loader: 'postcss-loader',
-      options: {
-        plugins: () => [
-          autoprefixer
-        ]
-      }
-    },
-    {
-      loader: 'sass-loader',
-      options: {
-        outputStyle: 'expanded'
-      }
-    }],
-},
-{
-  test: /\.(jpg|png|gif)$/,
-  loader: 'file-loader?name=assets/img/[name].[ext]'
-},
-{
-  test: /\.(eot|svg|ttf|woff|woff2)$/,
-  loader: 'file-loader?name=fonts/[name].[ext]'
-}
+webpackConfig.module.rules = [
+  ...webpackConfig.module.rules,
+  {
+    test: /\.s?css$/,
+    use: [
+      MiniCssExtractPlugin.loader,
+      {
+        loader: 'css-loader',
+        options: {
+          minimize: true,
+          importLoaders: 2
+        }
+      },
+      {
+        loader: 'postcss-loader',
+        options: {
+          plugins: () => [
+            autoprefixer
+          ]
+        }
+      },
+      {
+        loader: 'sass-loader',
+        options: {
+          outputStyle: 'expanded'
+        }
+      }],
+  },
+  {
+    test: /\.(jpg|png|gif)$/,
+    loader: 'file-loader?name=assets/img/[name].[ext]'
+  },
+  {
+    test: /\.(eot|svg|ttf|woff|woff2)$/,
+    loader: 'file-loader?name=fonts/[name].[ext]'
+  }
 ]
 
 webpackConfig.plugins = [
