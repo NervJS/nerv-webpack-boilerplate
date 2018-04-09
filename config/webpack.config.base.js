@@ -1,5 +1,4 @@
 const helpers = require('./helpers')
-const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin')
 
 const config = {
   entry: {
@@ -38,9 +37,7 @@ const config = {
       }]
     }]
   },
-  plugins: [
-    new NamedModulesPlugin()
-  ]
+  plugins: []
 }
 
 module.exports = config

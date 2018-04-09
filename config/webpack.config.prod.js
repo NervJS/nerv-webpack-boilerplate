@@ -1,22 +1,49 @@
-const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const autoprefixer = require('autoprefixer')
 const webpackConfig = require('./webpack.config.base')
 const helpers = require('./helpers')
 const DefinePlugin = require('webpack/lib/DefinePlugin')
 const env = require('../environment/prod.env')
 
-const extractStyle = new ExtractTextPlugin({
+const extractStyle = new MiniCssExtractPlugin({
   filename: 'css/[name].css',
+  chunkFilename: "[id].css",
   disable: process.env.NODE_ENV === 'development'
 })
 
-webpackConfig.module.rules = [...webpackConfig.module.rules,
+webpackConfig.mode = "production";
+webpackConfig.optimization = {
+  minimizer: [
+    new UglifyJSPlugin({
+      uglifyOptions: {
+        beautify: false,
+        ie8: true,
+        mangle: {
+          keep_fnames: true,
+          properties: false,
+        },
+        compress: {
+          warnings: false,
+          properties: false
+        },
+        output: {
+          keep_quoted_props: true
+        },
+        comments: false
+      }
+    })
+  ]
+};
+
+webpackConfig.module.rules = [
+  ...webpackConfig.module.rules,
   {
     test: /\.s?css$/,
-    use: extractStyle.extract({
-      use: [{
+    use: [
+      MiniCssExtractPlugin.loader,
+      {
         loader: 'css-loader',
         options: {
           minimize: true,
@@ -37,9 +64,6 @@ webpackConfig.module.rules = [...webpackConfig.module.rules,
           outputStyle: 'expanded'
         }
       }],
-      // use style-loader in development
-      fallback: 'style-loader'
-    })
   },
   {
     test: /\.(jpg|png|gif)$/,
@@ -51,7 +75,8 @@ webpackConfig.module.rules = [...webpackConfig.module.rules,
   }
 ]
 
-webpackConfig.plugins = [...webpackConfig.plugins,
+webpackConfig.plugins = [
+  ...webpackConfig.plugins,
   extractStyle,
   new HtmlWebpackPlugin({
     inject: false,
@@ -69,24 +94,6 @@ webpackConfig.plugins = [...webpackConfig.plugins,
       minifyCSS: true,
       minifyURLs: true
     }
-  }),
-  new webpack.optimize.UglifyJsPlugin({
-    beautify: false,
-    mangle: {
-      screw_ie8: false,
-      keep_fnames: true,
-      properties: false,
-      keep_quoted: true
-    },
-    compress: {
-      warnings: false,
-      screw_ie8: false,
-      properties: false
-    },
-    output: {
-      keep_quoted_props: true
-    },
-    comments: false
   }),
   new DefinePlugin({
     'process.env': env
