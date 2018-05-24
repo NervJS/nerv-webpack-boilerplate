@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "cross-env NODE_ENV=production npm run clean && webpack --config config/webpack.config.prod.js",
+    "deploy": "npm run build && http-server ./dist",
     "clean": "echo 'rimraf dist'",
     "precommit": "lint-staged"
   },
@@ -58,6 +59,7 @@
     "extract-text-webpack-plugin": "3.0.2",
     "file-loader": "1.1.6",
     "html-webpack-plugin": "3.0.4",
+    "http-server": "^0.11.1",
     "husky": "0.14.3",
     "json-loader": "0.5.7",
     "lint-staged": "7.0.0",
