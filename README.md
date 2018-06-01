@@ -27,3 +27,6 @@ A simple Webpack boilerplate with Nervjs.
 
 * Build:
     `npm run build`
+
+* Run in IE 8
+    `npm run deploy`

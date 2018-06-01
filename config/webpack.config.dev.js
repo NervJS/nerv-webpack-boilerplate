@@ -42,7 +42,11 @@ webpackConfig.devServer = {
     poll: 1000
   },
   contentBase: './src',
-  open: true
+  open: true,
+  stats: {
+    colors: true,
+    modules: false
+  }
 }
 
 module.exports = webpackConfig

@@ -40,7 +40,11 @@ const config = {
   },
   plugins: [
     new NamedModulesPlugin()
-  ]
+  ],
+  stats: {
+    colors: true,
+    modules: false
+  }
 }
 
 module.exports = config
