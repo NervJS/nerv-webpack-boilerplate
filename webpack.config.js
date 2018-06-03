@@ -11,7 +11,7 @@ const extractStyle = new ExtractTextPlugin({
   filename: 'css/[name].[hash:4].css'
 })
 const config = {
-  mode: process.env.WEBPACK_SERVE ? "development" : "production",
+  mode: "production",
   entry: {
     'index': resolveApp('./src/page/index.js'),
     'es5-polyfill': 'es5-polyfill'

@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-serve --open --content src --log-level warn",
+    "dev": "webpack-serve --config webpack.config.dev.js --open --content src --log-level warn",
     "build": "rimraf dist && webpack --hide-modules",
     "deploy": "npm run build && http-server ./dist",
     "precommit": "lint-staged"
