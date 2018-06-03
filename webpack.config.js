@@ -3,6 +3,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const autoprefixer = require('autoprefixer')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
@@ -110,7 +111,29 @@ const config = {
       }
     }),
     extractStyle
-  ]
+  ],
+  optimization: {
+    minimizer: [
+      new UglifyJSPlugin({
+        uglifyOptions: {
+          beautify: false,
+          ie8: true,
+          mangle: {
+            keep_fnames: true,
+            properties: false,
+          },
+          compress: {
+            warnings: false,
+            properties: false
+          },
+          output: {
+            keep_quoted_props: true
+          },
+          comments: false
+        }
+      })
+    ]
+  }
 }
 
 module.exports = config
