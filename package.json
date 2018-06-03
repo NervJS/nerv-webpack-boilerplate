@@ -3,10 +3,9 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server",
-    "build": "cross-env NODE_ENV=production npm run clean && webpack --config config/webpack.config.prod.js",
+    "dev": "webpack-serve --open --content src --log-level warn",
+    "build": "rimraf dist && webpack --progress --hide-modules",
     "deploy": "npm run build && http-server ./dist",
-    "clean": "echo 'rimraf dist'",
     "precommit": "lint-staged"
   },
   "lint-staged": {
@@ -57,14 +56,14 @@
     "eslint-plugin-promise": "3.6.0",
     "eslint-plugin-react": "7.6.1",
     "eslint-plugin-standard": "3.0.1",
-    "extract-text-webpack-plugin": "3.0.2",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "1.1.6",
-    "html-webpack-plugin": "3.0.4",
+    "html-webpack-plugin": "^3.2.0",
     "http-server": "^0.11.1",
     "husky": "0.14.3",
     "json-loader": "0.5.7",
     "lint-staged": "7.0.0",
-    "node-sass": "4.7.2",
+    "node-sass": "^4.9.0",
     "postcss-loader": "2.0.10",
     "prettier": "1.11.1",
     "raw-loader": "0.5.1",
@@ -83,8 +82,10 @@
     "typescript": "2.6.2",
     "uglifyjs-webpack-plugin": "1.2.2",
     "url-loader": "0.6.2",
-    "webpack": "3.10.0",
-    "webpack-dev-server": "2.10.0"
+    "webpack": "4.10.1",
+    "webpack-cli": "^3.0.1",
+    "webpack-dev-server": "3.1.4",
+    "webpack-serve": "^1.0.2"
   },
   "dependencies": {
     "@babel/runtime": "7.0.0-beta.40",
