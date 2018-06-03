@@ -116,20 +116,7 @@ const config = {
     minimizer: [
       new UglifyJSPlugin({
         uglifyOptions: {
-          beautify: false,
-          ie8: true,
-          mangle: {
-            keep_fnames: true,
-            properties: false,
-          },
-          compress: {
-            warnings: false,
-            properties: false
-          },
-          output: {
-            keep_quoted_props: true
-          },
-          comments: false
+          ie8: true
         }
       })
     ]
