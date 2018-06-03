@@ -116,7 +116,8 @@ const config = {
     minimizer: [
       new UglifyJSPlugin({
         uglifyOptions: {
-          ie8: true
+          ie8: true,
+          keep_fnames: true
         }
       })
     ]
