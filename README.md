@@ -5,6 +5,7 @@ A simple Webpack boilerplate with Nervjs.
 
 ## Features
 
+* 🤖[Nerv](https://github.com/NervJS/nerv) inside
 * Inline [Polyfill](https://github.com/o2team/es5-polyfill) for IE8 support !
 * [Webpack](https://github.com/webpack/webpack) based
 * [Typescript](https://github.com/Microsoft/TypeScript) support

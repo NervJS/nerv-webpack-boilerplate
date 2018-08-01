@@ -16,5 +16,9 @@ module.exports = {
       true
     ],
     'unit-whitelist': ['px', '%', 's', 'em']
-  }
+  },
+  ignoreFiles: [
+    '**/*.html',
+    '**/*.js'
+  ]
 }

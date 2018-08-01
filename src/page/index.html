@@ -1,10 +1,15 @@
+<%
+  const jsFiles = htmlWebpackPlugin.files.js.concat();
+  const polyfillFileIndex = jsFiles.findIndex(jsFile => jsFile.entryName === 'es5-polyfill');
+  const polyfillFile = jsFiles.splice(polyfillFileIndex, 1)[0];
+%>
 <!doctype html>
 <html>
   <head>
     <meta charset="utf8" />
     <title>nerv-webpack-boilerplate</title>
     <!--[if IE 8]>
-      <script type="text/javascript" src="<%= htmlWebpackPlugin.files.chunks['es5-polyfill'].entry %>"></script>
+      <script type="text/javascript" src="<%= polyfillFile.path %>"></script>
     <![endif]-->
     <link rel="icon" type="image/png" href="<%= htmlWebpackPlugin.files.favicon %>">
     <% for (var css in htmlWebpackPlugin.files.css) { %>
@@ -13,10 +18,8 @@
   </head>
   <body>
     <div id="app"></div>
-
-    <% for (var chunkName in htmlWebpackPlugin.files.chunks) { %>
-      <% if (chunkName === 'es5-polyfill') continue; %>
-      <script type="text/javascript" src="<%= htmlWebpackPlugin.files.chunks[chunkName].entry %>"></script>
-    <% } %>
+    <% jsFiles.forEach(jsFile => { %>
+      <script type="text/javascript" src="<%= jsFile.path %>"></script>
+    <% }) %>
   </body>
 </html>

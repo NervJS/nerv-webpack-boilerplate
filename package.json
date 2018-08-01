@@ -3,10 +3,9 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-serve --config webpack.config.dev.js --open --content src --log-level warn",
+    "dev": "webpack-serve --config webpack.config.dev.js",
     "build": "rimraf dist && webpack --hide-modules",
-    "deploy": "npm run build && http-server ./dist",
-    "precommit": "lint-staged"
+    "deploy": "npm run build && http-server ./dist"
   },
   "lint-staged": {
     "src/**/*.(js|jsx)": [
@@ -39,13 +38,14 @@
     "@babel/plugin-transform-react-jsx": "7.0.0-beta.49",
     "@babel/plugin-transform-runtime": "7.0.0-beta.49",
     "@babel/preset-env": "7.0.0-beta.49",
-    "autoprefixer": "8.6.0",
+    "autoprefixer": "^9.0.2",
     "babel-eslint": "8.2.3",
     "babel-loader": "^8.0.0-beta.3",
     "babel-plugin-transform-es3-member-expression-literals": "6.22.0",
     "babel-plugin-transform-es3-property-literals": "6.22.0",
+    "clean-webpack-plugin": "^0.1.19",
     "cross-env": "5.1.6",
-    "css-loader": "0.28.11",
+    "css-loader": "^1.0.0",
     "eslint": "4.19.1",
     "eslint-config-prettier": "2.9.0",
     "eslint-config-standard": "11.0.0",
@@ -56,42 +56,46 @@
     "eslint-plugin-promise": "3.8.0",
     "eslint-plugin-react": "7.8.2",
     "eslint-plugin-standard": "3.1.0",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "1.1.11",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^4.0.0-alpha",
     "http-server": "^0.11.1",
-    "husky": "0.14.3",
+    "husky": "^1.0.0-rc.13",
     "json-loader": "0.5.7",
-    "lint-staged": "7.1.3",
-    "postcss-loader": "2.1.5",
+    "lint-staged": "^7.2.0",
+    "mini-css-extract-plugin": "^0.4.1",
+    "node-sass": "^4.9.0",
+    "postcss-loader": "^2.1.6",
     "prettier": "1.13.4",
     "raw-loader": "0.5.1",
     "rimraf": "2.6.2",
+    "sass-loader": "^7.0.2",
     "style-loader": "0.21.0",
     "stylelint": "9.2.1",
     "stylelint-config-prettier": "3.2.0",
     "stylelint-config-standard": "18.2.0",
-    "ts-loader": "4.3.1",
+    "ts-loader": "^4.4.2",
     "tslint": "5.10.0",
     "tslint-config-prettier": "1.13.0",
     "tslint-config-standard": "7.0.0",
     "tslint-loader": "3.6.0",
     "tslint-react": "3.6.0",
-    "typescript": "2.9.1",
+    "typescript": "^3.0.1",
     "uglifyjs-webpack-plugin": "^1.2.4",
     "url-loader": "1.0.1",
-    "webpack": "4.10.2",
-    "webpack-cli": "^3.0.1",
-    "webpack-dev-server": "3.1.4",
-    "webpack-serve": "^1.0.2"
+    "webpack": "^4.16.3",
+    "webpack-cli": "^3.1.0",
+    "webpack-serve": "^2.0.2"
   },
   "dependencies": {
     "@babel/runtime": "7.0.0-beta.49",
     "es5-polyfill": "0.0.6",
     "es6-object-assign": "1.1.0",
     "es6-promise": "4.2.4",
-    "nervjs": "1.2.18",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.2"
+    "nervjs": "^1.3.2-beta.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
