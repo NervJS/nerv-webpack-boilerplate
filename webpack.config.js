@@ -4,17 +4,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const resolveApp = relativePath => path.resolve(__dirname, relativePath);
 
 const babelLoader = require.resolve('babel-loader');
-const tsLoader = {
-  loader: require.resolve('ts-loader'),
-  options: {
-    onlyCompileBundledFiles: true
-  }
-};
 const urlLoader = {
   loader: require.resolve('url-loader'),
   options: {
@@ -68,8 +62,8 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
     minifyHTML: true
   }
 });
-const uglifyJSPlugin = new UglifyJSPlugin({
-  uglifyOptions: {
+const terserPlugin = new TerserPlugin({
+  terserOptions: {
     ie8: true,
     keep_fnames: true
   }
@@ -99,14 +93,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.[tj]sx?$/i,
         exclude: /node_modules/,
         loader: babelLoader
-      },
-      {
-        test: /\.tsx?$/,
-        exclude: /node_modules/,
-        use: [babelLoader, tsLoader]
       },
       {
         test: /\.(jpe?g|png|gif)$/,

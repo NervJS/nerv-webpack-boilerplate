@@ -5,12 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const resolveApp = relativePath => path.join(__dirname, relativePath);
 
 const babelLoader = require.resolve('babel-loader');
-const tsLoader = {
-  loader: require.resolve('ts-loader'),
-  options: {
-    onlyCompileBundledFiles: true
-  }
-};
 const fileLoader = require.resolve('file-loader');
 const styleLoader = require.resolve('style-loader');
 const cssLoader = {
@@ -51,17 +45,17 @@ module.exports = {
       'react-dom': 'nervjs'
     }
   },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9000
+  },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.[tj]sx?$/i,
         exclude: /node_modules/,
         loader: babelLoader
-      },
-      {
-        test: /\.tsx?$/,
-        exclude: /node_modules/,
-        use: [babelLoader, tsLoader]
       },
       {
         test: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)$/,
